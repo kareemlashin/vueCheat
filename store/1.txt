@@ -1,0 +1,15 @@
+1- mounted call get data 
+    this.$store.dispatch("fetchUsers");
+2- computed get data and loop this        
+cars() {
+      return this.$store.getters.all;
+    },
+
+3- dispatch get post put delete       
+this.$store.dispatch("deleteUser", id);
+
+4-edit 
+      this.$store.dispatch("save", {id:idItem,userId:this.form.userId,title:this.form.title});
+
+5-put 
+      this.$store.dispatch("save", {id:idItem,userId:this.form.userId,title:this.form.title});
