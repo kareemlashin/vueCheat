@@ -1,0 +1,23 @@
+myObj = { name: "John", age: 31, city: "New York" };
+myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+text = localStorage.getItem("testJSON");
+obj = JSON.parse(text);
+
+        meta: {
+            roles: ["admin", 'user', 'guest']
+        },
+        beforeEnter: (to, from, next) => {
+            if (localStorage.getItem("token")) {
+                let role = localStorage.getItem('role');
+                let admin = to.meta.roles;
+                if (admin.includes(role)) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                next('/login');
+            }
+        },
+        
